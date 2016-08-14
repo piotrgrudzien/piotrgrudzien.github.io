@@ -18,8 +18,12 @@
 			request = $.ajax({
 				data : 'time=' + time,
 				url : '/php/save.php',
-				type : 'GET'
+				type : 'GET',
+				success : function(d) {
+					alert(d);
+				}
 			});
+
 		</script>
 		<script type="text/javascript">
 			const offset = window.innerHeight / 20;
