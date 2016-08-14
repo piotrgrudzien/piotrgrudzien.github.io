@@ -1,2 +1,2 @@
 header('Access-Control-Allow-Origin: *');
-echo "Hello"
+echo $_GET["data"]
