@@ -14,10 +14,11 @@
 
 	<body>
 		<script type="text/javascript">
+			var time = Date.now();
 			request = $.ajax({
-				data : 'hello',
+				data : 'time=' + time,
 				url : '/php/save.php',
-				type : 'GET', 
+				type : 'GET'
 			});
 		</script>
 		<script type="text/javascript">
