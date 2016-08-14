@@ -1,1 +1,1 @@
-echo $_POST[1234];
+echo $_POST['1234'];
