@@ -18,9 +18,10 @@
 			request = $.ajax({
 				data : 'time=' + time,
 				url : '/php/save.php',
-				type : 'GET'
-			}).done(function(d) {
-				alert(d);
+				type : 'GET',
+				success : function(response) {
+					alert(response);
+				}
 			});
 
 		</script>
