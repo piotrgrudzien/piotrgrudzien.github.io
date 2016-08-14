@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 
-<!-- Google Analytics -->
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] ||
-		function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o),
-		m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-	ga('create', 'UA-82431857-1', 'auto');
-	ga('send', 'pageview');
-
-</script>
-
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <html>
 	<head>
-		<link href="theme.css" rel="stylesheet">
+		<link href="css/theme.css" rel="stylesheet">
+
 	</head>
 
 	<body>
+		<script type="text/javascript">
+			const offset_x = document.body.clientWidth - window.innerWidth;
+			const offset_y = document.body.clientHeight - window.innerHeight;
+			var svg = d3.select("body").append("svg");
+			svg.attr("width", window.innerWidth).attr("height", window.innerHeight).style("border", "1px solid black");
+			//svg.attr("viewBox", "0 0 1500 1000").attr("preserveAspectRatio", "true");
 
+			var rect_data = ["DeepSkyBlue"];
+			var rect = svg.selectAll("rect").data(rect_data).enter().append("rect");
+			rect.attr("width", svg.attr("width")).attr("height", svg.attr("height"));
+			rect.attr("fill", function(d) {
+				return d;
+			});
+
+			var text_data = ["Piotr Grudzie\u0144"];
+			var text = svg.selectAll("text").data(text_data).enter().append("text");
+			text.attr("x", svg.attr("width") / 2).attr("y", svg.attr("height") / 2).text(function(d) {
+				//return "window height: " + window.innerHeight + " document height: " + document.body.clientHeight;
+				return "window width: " + window.innerWidth + " document width: " + document.body.clientWidth;
+			}).attr("font-family", "monospace").attr("font-size", "20px");
+
+			window.onresize = function(event) {
+				svg.attr("width", window.innerWidth).attr("height", window.innerHeight);
+				text.text(function(d) {
+					//return "window height: " + window.innerHeight + " document height: " + document.body.clientHeight;
+					return "window width: " + window.innerWidth + " document width: " + document.body.clientWidth;
+				})
+				text.attr("x", svg.attr("width") / 2).attr("y", svg.attr("height") / 2);
+				rect.attr("width", svg.attr("width")).attr("height", svg.attr("height"));
+			};
+
+		</script>
 	</body>
+
+	<!--Google Analytics-->
+	<script >
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] ||
+			function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-82431857-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
 </html>
