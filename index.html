@@ -18,7 +18,7 @@
 			request = $.ajax({
 				data : 'time=' + time,
 				url : '/php/save.php',
-				type : 'GET',
+				type : 'POST',
 				success : function(response) {
 					alert(response);
 				}
