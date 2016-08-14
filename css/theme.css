@@ -2,12 +2,15 @@
 	position: absolute;
 	border: 1px solid black;
 }
-.linkedin .email {
+.linkedin {
 	font-family: monospace;
 	font-size: 15px;
-	display: none;
 }
-.autho {
+.email {
+	font-family: monospace;
+	font-size: 15px;
+}
+.author {
 	font-family: monospace;
 	font-size: 20px;
 }
