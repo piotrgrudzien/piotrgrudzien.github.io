@@ -113,8 +113,7 @@
         .attr("font-size", "20px");
         
 		var cxd = parseInt(circles.attr("cx"))
-       d3.select("body")
-       .on("mouseover", function() { 
+        circles.on("click", function() { 
    			cxd += 5
    			console.log(cxd)
    			circles.transition().attr("cx", cxd)
