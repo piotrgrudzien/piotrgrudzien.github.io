@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>RL time</title>
+		<title>Ideas Stock Market</title>
 		<meta name="author" content="Piotr Grudzien" />
 		<link href="css/theme.css" rel="stylesheet">
 		<script src="js/utils.js" type="text/javascript"></script>
@@ -16,8 +16,8 @@
 		<script type="text/javascript">
 			var time = Date.now();
 			request = $.ajax({
-				data : 'time=' + time,
-				url : '/php/saveUTF.php',
+				data : {time: time},
+				url : '/php/save.php',
 				type : 'POST',
 				success : function(response) {
 					alert(response);
