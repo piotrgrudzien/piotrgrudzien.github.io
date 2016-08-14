@@ -10,11 +10,13 @@
 
 	<body>
 		<script type="text/javascript">
-			const offset_x = document.body.clientWidth - window.innerWidth;
-			const offset_y = document.body.clientHeight - window.innerHeight;
+			const offset = window.innerHeight / 20;
 			var svg = d3.select("body").append("svg");
-			svg.attr("width", window.innerWidth).attr("height", window.innerHeight).style("border", "1px solid black");
-			//svg.attr("viewBox", "0 0 1500 1000").attr("preserveAspectRatio", "true");
+			svg.style("position", "absolute");
+			svg.style("top", offset);
+			svg.style("left", offset);
+			svg.attr("width", window.innerWidth - 2 * offset).attr("height", window.innerHeight - 2 * offset);
+			svg.style("border", "1px solid black");
 
 			var rect_data = ["DeepSkyBlue"];
 			var rect = svg.selectAll("rect").data(rect_data).enter().append("rect");
@@ -31,7 +33,7 @@
 			}).attr("font-family", "monospace").attr("font-size", "20px");
 
 			window.onresize = function(event) {
-				svg.attr("width", window.innerWidth).attr("height", window.innerHeight);
+				svg.attr("width", window.innerWidth - 2 * offset).attr("height", window.innerHeight - 2 * offset);
 				text.text(function(d) {
 					//return "window height: " + window.innerHeight + " document height: " + document.body.clientHeight;
 					return "window width: " + window.innerWidth + " document width: " + document.body.clientWidth;
