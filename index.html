@@ -4,42 +4,39 @@
 
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>RL time</title>
+		<meta name="author" content="Piotr Grudzien" />
 		<link href="css/theme.css" rel="stylesheet">
-
+		<script src="js/utils.js" type="text/javascript"></script>
 	</head>
 
 	<body>
 		<script type="text/javascript">
 			const offset = window.innerHeight / 20;
-			var svg = d3.select("body").append("svg");
-			svg.style("position", "absolute");
-			svg.style("top", offset);
-			svg.style("left", offset);
-			svg.attr("width", window.innerWidth - 2 * offset).attr("height", window.innerHeight - 2 * offset);
-			svg.style("border", "1px solid black");
 
-			var rect_data = ["DeepSkyBlue"];
-			var rect = svg.selectAll("rect").data(rect_data).enter().append("rect");
-			rect.attr("width", svg.attr("width")).attr("height", svg.attr("height"));
+			var svg = d3.select("body").append("svg").attr("class", "top-svg");
+			svg.style("top", offset).style("left", offset);
+			position_svg(window, svg, offset);
+
+			var rect_colors = ["DeepSkyBlue"];
+			var rect = svg.selectAll("rect").data(rect_colors).enter().append("rect");
+			position_rect(svg, rect);
 			rect.attr("fill", function(d) {
 				return d;
 			});
 
-			var text_data = ["Piotr Grudzie\u0144"];
+			var text_data = ["Author: Piotr Grudzie\u0144"];
 			var text = svg.selectAll("text").data(text_data).enter().append("text");
-			text.attr("x", svg.attr("width") / 2).attr("y", svg.attr("height") / 2).text(function(d) {
-				//return "window height: " + window.innerHeight + " document height: " + document.body.clientHeight;
-				return "window width: " + window.innerWidth + " document width: " + document.body.clientWidth;
+			position_author(text, rect);
+			text.text(function(d) {
+				return d;
 			}).attr("font-family", "monospace").attr("font-size", "20px");
 
 			window.onresize = function(event) {
-				svg.attr("width", window.innerWidth - 2 * offset).attr("height", window.innerHeight - 2 * offset);
-				text.text(function(d) {
-					//return "window height: " + window.innerHeight + " document height: " + document.body.clientHeight;
-					return "window width: " + window.innerWidth + " document width: " + document.body.clientWidth;
-				})
-				text.attr("x", svg.attr("width") / 2).attr("y", svg.attr("height") / 2);
-				rect.attr("width", svg.attr("width")).attr("height", svg.attr("height"));
+				position_svg(window, svg, offset);
+				position_rect(svg, rect);
+				position_author(text, rect);
 			};
 
 		</script>
