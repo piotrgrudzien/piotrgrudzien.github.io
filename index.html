@@ -17,8 +17,8 @@
 			var time = Date.now();
 			request = $.ajax({
 				data : 'time=' + time,
-				url : '/php/save.php',
-				type : 'GET',
+				url : '/php/saveUTF.php',
+				type : 'POST',
 				success : function(response) {
 					alert(response);
 				}
