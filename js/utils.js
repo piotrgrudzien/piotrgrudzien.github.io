@@ -10,6 +10,10 @@ function position_rect(svg, rect) {
 	rect.attr("width", svg.attr("width")).attr("height", svg.attr("height"));
 }
 
-function position_author(text, rect) {
-	text.attr("x", rect.attr("width") * 0.01).attr("y", rect.attr("height") - rect.attr("width") * 0.01);
+function position_email(email, rect) {
+	email.attr("x", rect.attr("width") * 0.01).attr("y", rect.attr("height") - rect.attr("width") * 0.03);
+}
+
+function position_author(author, rect) {
+	author.attr("x", rect.attr("width") * 0.01).attr("y", rect.attr("height") - rect.attr("width") * 0.01);
 }

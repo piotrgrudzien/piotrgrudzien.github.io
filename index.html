@@ -25,18 +25,35 @@
 			rect.attr("fill", function(d) {
 				return d;
 			});
+			
+			var email_data = ["piotr.szymon.grudzien@gmail.com"];
+			var email = svg.append("text");
+			position_email(email, rect);
+			email.text("piotr.szymon.grudzien@gmail.com");
+			email.attr("font-family", "monospace").attr("font-size", "15px").attr("display", "none");
 
-			var text_data = ["Author: Piotr Grudzie\u0144"];
-			var text = svg.selectAll("text").data(text_data).enter().append("text");
-			position_author(text, rect);
-			text.text(function(d) {
-				return d;
-			}).attr("font-family", "monospace").attr("font-size", "20px");
+			var author_data = ["Author: Piotr Grudzie\u0144"];
+			var author = svg.append("text");
+			position_author(author, rect);
+			author.text("Author: Piotr Grudzie\u0144");
+			author.attr("font-family", "monospace").attr("font-size", "20px");
+			author.on("mouseover", function(event) {
+				author.transition().attr("text-decoration", "underline");
+				email.transition().attr("display", "inline");
+			});
+			author.on("mouseout", function(event) {
+				author.transition().attr("text-decoration", "none");
+				email.transition().attr("display", "none");
+			});
+			author.on("click", function(event) { 
+				
+			});
 
 			window.onresize = function(event) {
 				position_svg(window, svg, offset);
 				position_rect(svg, rect);
-				position_author(text, rect);
+				position_email(email, rect);
+				position_author(author, rect);
 			};
 
 		</script>
