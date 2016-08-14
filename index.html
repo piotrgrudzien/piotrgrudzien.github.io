@@ -9,9 +9,20 @@
 		<meta name="author" content="Piotr Grudzien" />
 		<link href="css/theme.css" rel="stylesheet">
 		<script src="js/utils.js" type="text/javascript"></script>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
 	</head>
 
 	<body>
+		<script type="text/javascript">
+			$.ajax({
+				data : 'orderid=' + 1234,
+				url : 'php/save.php',
+				method : 'POST', 
+				success : function(msg) {
+					alert(msg);
+				}
+			});
+		</script>
 		<script type="text/javascript">
 			const offset = window.innerHeight / 20;
 
@@ -25,12 +36,12 @@
 			rect.attr("fill", function(d) {
 				return d;
 			});
-			
+
 			var linkedin = svg.append("text").attr("class", "linkedin").attr("display", "none");
 			position_linkedin(linkedin, rect);
 			linkedin.text("linkedin/in/piotrgrudzien");
 			//linkedin.attr("font-family", "monospace").attr("font-size", "15px").attr("display", "none");
-			
+
 			var email = svg.append("text").attr("class", "email").attr("display", "none");
 			position_email(email, rect);
 			email.text("piotr.szymon.grudzien@gmail.com");

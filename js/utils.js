@@ -21,3 +21,25 @@ function position_email(email, rect) {
 function position_author(author, rect) {
 	author.attr("x", rect.attr("width") * 0.01).attr("y", rect.attr("height") - rect.attr("width") * 0.01);
 }
+
+function post(path, params, method) {
+    method = method || "post";
+
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+         }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
