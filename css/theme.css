@@ -2,4 +2,12 @@
 	position: absolute;
 	border: 1px solid black;
 }
-
+.linkedin .email {
+	font-family: monospace;
+	font-size: 15px;
+	display: none;
+}
+.autho {
+	font-family: monospace;
+	font-size: 20px;
+}

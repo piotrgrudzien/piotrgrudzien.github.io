@@ -26,32 +26,35 @@
 				return d;
 			});
 			
-			var email_data = ["piotr.szymon.grudzien@gmail.com"];
-			var email = svg.append("text");
+			var linkedin = svg.append("text").attr("class", "linkedin");
+			position_linkedin(linkedin, rect);
+			linkedin.text("linkedin/piotrgrudzien");
+			//linkedin.attr("font-family", "monospace").attr("font-size", "15px").attr("display", "none");
+			
+			var email = svg.append("text").attr("class", "email");
 			position_email(email, rect);
 			email.text("piotr.szymon.grudzien@gmail.com");
-			email.attr("font-family", "monospace").attr("font-size", "15px").attr("display", "none");
+			//email.attr("font-family", "monospace").attr("font-size", "15px").attr("display", "none");
 
-			var author_data = ["Author: Piotr Grudzie\u0144"];
-			var author = svg.append("text");
+			var author = svg.append("text").attr("class", "author");
 			position_author(author, rect);
 			author.text("Author: Piotr Grudzie\u0144");
-			author.attr("font-family", "monospace").attr("font-size", "20px");
+			//author.attr("font-family", "monospace").attr("font-size", "20px");
 			author.on("mouseover", function(event) {
 				author.transition().attr("text-decoration", "underline");
 				email.transition().attr("display", "inline");
+				linkedin.transition().attr("display", "inline");
 			});
 			author.on("mouseout", function(event) {
 				author.transition().attr("text-decoration", "none");
 				email.transition().attr("display", "none");
-			});
-			author.on("click", function(event) { 
-				
+				linkedin.transition().attr("display", "none");
 			});
 
 			window.onresize = function(event) {
 				position_svg(window, svg, offset);
 				position_rect(svg, rect);
+				position_linkedin(linkedin, rect);
 				position_email(email, rect);
 				position_author(author, rect);
 			};

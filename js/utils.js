@@ -10,6 +10,10 @@ function position_rect(svg, rect) {
 	rect.attr("width", svg.attr("width")).attr("height", svg.attr("height"));
 }
 
+function position_linkedin(linkedin, rect) {
+	linkedin.attr("x", rect.attr("width") * 0.01).attr("y", rect.attr("height") - rect.attr("width") * 0.05);
+}
+
 function position_email(email, rect) {
 	email.attr("x", rect.attr("width") * 0.01).attr("y", rect.attr("height") - rect.attr("width") * 0.03);
 }
